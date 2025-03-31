@@ -1,0 +1,35 @@
+# C10D.cz robots.txt
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Disallow admin and development directories
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /.cursor/
+Disallow: /dist/
+Disallow: /src/
+Disallow: /components/
+
+# Prevent indexing of development files
+Disallow: /*.json$
+Disallow: /*.config.js$
+Disallow: /*.lock$
+
+# Allow main content files
+Allow: /*.html$
+Allow: /*.css$
+Allow: /*.js$
+
+# Prevent duplicate content
+Disallow: /*?*
+
+# Sitemap location
+Sitemap: https://c10d.cz/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 10 

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="career.page.title">Kariéra | C10D s.r.o.</title>
+  <meta name="description" data-i18n="career.page.description" content="Připojte se k našemu týmu. Nabízíme zajímavé pracovní příležitosti v oblasti průmyslové kovovýroby.">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1d4ed8',
+          },
+        },
+      },
+    }
+  </script>
+  
+  
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/light-theme.css">
+  <link rel="stylesheet" href="css/mobile-menu.css">
+  
+  
+  <link rel="icon" href="images/favicon.ico">
+  
+  
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="antialiased bg-slate-50" x-data="{ isOpen: false }">
+  
+  <header id="header" class="fixed w-full bg-slate-900 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between lg:justify-center relative">
+        <a href="index.html" class="logo transition-transform hover:scale-105 duration-300 lg:absolute lg:left-4">
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" id="header-logo" class="h-10 w-auto">
+        </a>
+        
+        
+        <button 
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-white hover:text-blue-400 transition-colors"
+          @click="isOpen = !isOpen"
+          :aria-expanded="isOpen"
+          aria-controls="mobile-menu"
+          aria-label="Menu">
+          <div class="flex flex-col justify-center w-6 h-5 space-y-1.5">
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'rotate-45 translate-y-2': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'opacity-0': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'-rotate-45 -translate-y-2': isOpen}"></span>
+          </div>
+        </button>
+        
+        <nav class="hidden lg:block" id="main-nav">
+          <ul class="flex space-x-8">
+            <li><a href="index.html" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.home">Domů</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.about">O nás</a></li>
+            <li><a href="index.html#services" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.services">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.technologies">Technologie</a></li>
+            <li><a href="index.html#certifications" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.certifications">Certifikace</a></li>
+            <li><a href="index.html#projects" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.projects">Dotace EU</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.gallery">Galerie</a></li>
+            <li><a href="index.html#career" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.career">Kariéra</a></li>
+            <li><a href="index.html#contact" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.contact">Kontakt</a></li>
+          </ul>
+        </nav>
+        
+        <div class="hidden lg:block lg:absolute lg:right-4">
+          <div class="relative group">
+            <button class="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
+              <img class="w-5 h-5" src="images/flags/cs.svg" alt="Čeština">
+              <span>CZ</span>
+              <i class="fas fa-chevron-down text-xs ml-1"></i>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right">
+              <div class="py-1">
+                <a href="#" data-lang="cs" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/cs.svg" alt="Čeština">
+                  <span>Čeština</span>
+                </a>
+                <a href="#" data-lang="en" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/gb.svg" alt="English">
+                  <span>English</span>
+                </a>
+                <a href="#" data-lang="de" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/de.svg" alt="Deutsch">
+                  <span>Deutsch</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <div 
+    id="mobile-menu" 
+    class="mobile-menu"
+    :class="{ 'show': isOpen }"
+    @click.away="isOpen = false"
+    x-show="isOpen"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-95"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95"
+    x-cloak>
+    <div class="container">
+      
+      <div class="flex items-center justify-between mb-12">
+        <a href="#" class="flex items-center">
+          <img src="images/new-logo-white.svg" alt="C10D" class="h-8">
+        </a>
+        <button 
+          type="button"
+          class="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5"
+          @click="isOpen = false"
+          aria-label="Zavřít menu">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      
+      <nav class="space-y-0.5">
+        <template x-for="(item, index) in [
+          { href: 'index.html', text: 'Domů', i18n: 'navigation.home' },
+          { href: 'index.html#about', text: 'O nás', i18n: 'navigation.about' },
+          { href: 'index.html#services', text: 'Služby', i18n: 'navigation.services' },
+          { href: 'index.html#technologies', text: 'Technologie', i18n: 'navigation.technologies' },
+          { href: 'index.html#certifications', text: 'Certifikace', i18n: 'navigation.certifications' },
+          { href: 'index.html#projects', text: 'Dotace EU', i18n: 'navigation.projects' },
+          { href: 'index.html#gallery', text: 'Galerie', i18n: 'navigation.gallery' },
+          { href: 'index.html#career', text: 'Kariéra', i18n: 'navigation.career' },
+          { href: 'index.html#kontakt', text: 'Kontakt', i18n: 'navigation.contact' }
+        ]">
+          <a :href="item.href" 
+             @click="isOpen = false" 
+             class="group block relative py-4 px-4 text-lg text-white/80 hover:text-white transition-all duration-200"
+             :class="{'opacity-100': window.location.hash === item.href || (item.href === '#hero' && !window.location.hash)}"
+             :data-i18n="item.i18n">
+            <span x-text="item.text"></span>
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+          </a>
+        </template>
+      </nav>
+
+      
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto my-8"></div>
+
+      
+      <div class="flex justify-center gap-12">
+        <template x-for="lang in [
+          { code: 'cs', name: 'Čeština', flag: 'cs' },
+          { code: 'en', name: 'Angličtina', flag: 'gb' },
+          { code: 'de', name: 'Němčina', flag: 'de' }
+        ]">
+          <a :href="'#'" 
+             :data-lang="lang.code" 
+             class="group"
+             :class="{ 'opacity-100': localStorage.getItem('language') === lang.code }">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 group-hover:bg-white/10 transition-all duration-300 transform group-hover:scale-110">
+              <img :src="'images/flags/' + lang.flag + '.svg'" 
+                   :alt="lang.name" 
+                   class="w-6 h-6 transition-transform duration-300 group-hover:scale-110">
+            </div>
+            <span class="block text-center text-sm text-white/60 mt-3 group-hover:text-white transition-colors" x-text="lang.name"></span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  
+  <section class="pt-32 pb-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400" data-key="career.title">Kariéra</h1>
+        <p class="text-lg text-blue-100/80" data-key="career.subtitle">Připojte se k našemu týmu profesionálů</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <main class="py-16 bg-gradient-to-b from-slate-50 to-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-7xl mx-auto space-y-12">
+        
+        <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg p-8 border border-blue-200 hover:shadow-xl transition-shadow duration-300">
+          <div class="flex items-start space-x-6">
+            <div class="flex-shrink-0">
+              <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-sm">
+                <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <p class="text-lg text-slate-700">V případě zájmu o pracovní pozici nám prosím zašlete Váš životopis na emailovou adresu <a href="mailto:info@c10d.cz" class="text-blue-600 hover:text-blue-800 font-medium underline decoration-2 decoration-blue-300 hover:decoration-blue-500 transition-all">info@c10d.cz</a>.</p>
+              <p class="text-lg text-slate-700">Můžete také využít tlačítka "Mám zájem o pozici" u jednotlivých nabídek níže.</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <h2 class="text-xl font-bold text-slate-800 mb-6 pb-3 border-b border-slate-200">Benefity</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="group p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+              <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-base font-medium text-slate-800 group-hover:text-slate-900">13. plat</h3>
+                </div>
+              </div>
+            </div>
+            <div class="group p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+              <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-base font-medium text-slate-800 group-hover:text-slate-900">Prémie/Bonusy</h3>
+                </div>
+              </div>
+            </div>
+            <div class="group p-4 rounded-lg hover:bg-slate-50 transition-colors duration-300">
+              <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                  <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors duration-300">
+                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-base font-medium text-slate-800 group-hover:text-slate-900">Stravenkový paušál</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-slate-100">
+            <div class="p-8">
+              <h2 class="text-2xl font-bold text-slate-800 mb-6">Svářeči/Stehaři</h2>
+              
+              <div class="mb-8 bg-gradient-to-r from-blue-50 to-blue-100 px-4 py-3 rounded-md border border-blue-200">
+                <span class="text-lg font-medium text-blue-700">
+                  Nástupní plat od 40 000 Kč/měsíc
+                </span>
+              </div>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center">
+                    <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Požadavky
+                  </h3>
+                  <ul class="space-y-3">
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">vyučení v oboru</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">praxe nutná</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">výborná znalost čtení výkresové dokumentace</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">jeřábnický průkaz – podmínkou (součástí náplně práce je manipulace s jeřábem)</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">platný průkaz řízení VZV – výhodou</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">samostatnost, pečlivost, zodpovědnost a aktivní přístup k práci</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="px-8 py-6 bg-gradient-to-b from-slate-50 to-slate-100 border-t border-slate-200">
+              <a href="mailto:info@c10d.cz?subject=Zájem o pracovní nabídku Svářeč" 
+                 class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-3 px-6 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-md">
+                <span>Mám zájem o pozici Svářeč</span>
+              </a>
+            </div>
+          </div>
+
+          
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-slate-100">
+            <div class="p-8">
+              <h2 class="text-2xl font-bold text-slate-800 mb-6">Obsluha CNC laseru</h2>
+              
+              <div class="mb-8 bg-gradient-to-r from-blue-50 to-blue-100 px-4 py-3 rounded-md border border-blue-200">
+                <span class="text-lg font-medium text-blue-700">
+                  Nástupní plat od 35 000 Kč/měsíc
+                </span>
+              </div>
+
+              <div class="space-y-6">
+                <div>
+                  <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center">
+                    <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Požadavky
+                  </h3>
+                  <ul class="space-y-3">
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">vyučení v oboru strojírenství</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">výborná znalost čtení výkresové dokumentace</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">praxe nutná – min. 1 rok</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">samostatnost, pečlivost, zodpovědnost a aktivní přístup k práci</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">platný průkaz řízení VZV – výhodou</span>
+                    </li>
+                    <li class="flex items-start group">
+                      <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">jeřábnický a vazačský průkaz – výhodou nikoli podmínkou</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="px-8 py-6 bg-gradient-to-b from-slate-50 to-slate-100 border-t border-slate-200">
+              <a href="mailto:info@c10d.cz?subject=Zájem o pracovní nabídku CNC laser" 
+                 class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-3 px-6 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-md">
+                <span>Mám zájem o pozici CNC laser</span>
+              </a>
+            </div>
+          </div>
+
+          
+          <div class="md:col-span-2 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-slate-100">
+            <div class="p-8">
+              <h2 class="text-2xl font-bold text-slate-800 mb-6">Soustružník/Frézař</h2>
+              
+              <div class="mb-8 bg-gradient-to-r from-blue-50 to-blue-100 px-4 py-3 rounded-md border border-blue-200">
+                <span class="text-lg font-medium text-blue-700">
+                  Nástupní plat od 35 000 Kč/měsíc
+                </span>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="space-y-6">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center">
+                      <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                      Náplň práce
+                    </h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">práce na soustruhu a frézce</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">kontrola odvedené práce</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">údržba svěřeného stroje</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">kusová a malosériová výroba (relativně se opakující)</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">obrábění široké škály materiálů (výpalky)</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                
+                <div class="space-y-6">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-700 mb-4 flex items-center">
+                      <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      Požadavky
+                    </h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">vyučení v oboru strojírenství</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">praxe na obdobné pozici</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">výborná znalost čtení výkresové dokumentace</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">jeřábnický průkaz – podmínkou</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">platný průkaz řízení VZV – výhodou</span>
+                      </li>
+                      <li class="flex items-start group">
+                        <svg class="w-5 h-5 text-blue-500 mt-1 mr-3 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span class="text-slate-600 group-hover:text-slate-900 transition-colors duration-300">samostatnost, pečlivost, zodpovědnost</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="px-8 py-6 bg-gradient-to-b from-slate-50 to-slate-100 border-t border-slate-200">
+              <a href="mailto:info@c10d.cz?subject=Zájem o pracovní nabídku Soustružník/Frézař" 
+                 class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-3 px-6 rounded-md transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-md">
+                <span>Mám zájem o pozici Soustružník/Frézař</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="bg-slate-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" class="h-10 w-auto mb-4">
+          <p class="text-gray-400" data-key="footer.description">Specialisté na laserové řezání a zpracování plechů</p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.contact">Kontakt</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><i class="fas fa-map-marker-alt mr-2"></i><span data-key="footer.address">Klimkovice 742 83</span></li>
+            <li><i class="fas fa-phone mr-2"></i><span data-key="footer.phone">+420 123 456 789</span></li>
+            <li><i class="fas fa-envelope mr-2"></i><span data-key="footer.email">info@c10d.cz</span></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.menu">Menu</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-key="nav.home">Domů</a></li>
+            <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors" data-key="nav.about">O nás</a></li>
+            <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors" data-key="nav.services">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-gray-400 hover:text-white transition-colors" data-key="nav.technologies">Technologie</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.social">Sociální sítě</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p data-key="footer.copyright">&copy; 2024 C10D s.r.o. Všechna práva vyhrazena.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="js/translations.js"></script>
+  <script>
+    
+    const mobileMenuBtn = document.querySelector('[aria-controls="mobile-menu"]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('header');
+    
+    let isMenuOpen = false;
+    
+    
+    const toggleMenu = (show) => {
+      isMenuOpen = show;
+      if (mobileMenuBtn) {
+        mobileMenuBtn.setAttribute('aria-expanded', show);
+      }
+      if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden', !show);
+      }
+      document.body.classList.toggle('overflow-hidden', show);
+    };
+    
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu(!isMenuOpen);
+      });
+    }
+
+    
+    document.addEventListener('click', (e) => {
+      if (isMenuOpen && mobileMenu && mobileMenuBtn && 
+          !mobileMenu.contains(e.target) && 
+          !mobileMenuBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    
+    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu(false);
+      }
+    });
+
+    
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0 && header) {
+        header.classList.remove('shadow-lg');
+      } else if (header) {
+        header.classList.add('shadow-lg');
+      }
+    });
+  </script>
+</body>
+</html> 
