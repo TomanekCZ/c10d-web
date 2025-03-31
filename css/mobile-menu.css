@@ -1,0 +1,183 @@
+/* Mobile Menu Styles */
+[x-cloak] {
+  display: none !important;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(15, 23, 42);
+  z-index: 60; /* Higher than header (50) */
+  padding-top: 0; /* Remove top padding */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Make menu scrollable */
+}
+
+/* Hide header when mobile menu is shown */
+.mobile-menu.show + header,
+.mobile-menu.show ~ header,
+body[x-data] .mobile-menu:not([style*="display: none"]) ~ header,
+body[x-data] .mobile-menu:not([style*="display: none"]) + header,
+body[x-data][x-data*="isOpen: true"] header {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* Force mobile menu over header */
+body[x-data][x-data*="isOpen: true"] .mobile-menu, 
+.mobile-menu.show {
+  z-index: 9999 !important;
+}
+
+/* Hamburger Button */
+.hamburger-menu-btn {
+  position: relative;
+  z-index: 50;
+  border: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Menu Content */
+.mobile-menu .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem; /* Match header padding */
+}
+
+/* Logo and Close Button container */
+.mobile-menu .flex.items-center.justify-between {
+  height: 64px; /* Exactly match header height */
+  padding: 0 4px; /* Add subtle padding for alignment */
+  margin-bottom: 0.75rem; /* Add spacing after the header */
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu nav a {
+  display: block;
+  padding: 0.5rem 0; /* Reduce vertical padding */
+  font-size: 1rem; /* Smaller font */
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu nav a:active {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Language Switcher in Mobile Menu */
+.mobile-menu .mt-8 {
+  margin-top: 0.5rem !important; /* Override margin-top */
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  font-size: 0.75rem; /* Smaller font */
+}
+
+/* Separator */
+.mobile-menu .w-16.h-px,
+.mobile-menu .w-12.h-px {
+  margin: 0.5rem auto !important; /* Reduce margin */
+}
+
+.mobile-menu .mt-8 img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Language buttons */
+.mobile-menu .flex.justify-center.gap-12,
+.mobile-menu .flex.justify-center.gap-4 {
+  gap: 0.5rem !important; /* Reduce gap between language options */
+}
+
+.mobile-menu .w-12.h-12,
+.mobile-menu .w-10.h-10 {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+/* Small screen specific styles */
+@media (max-height: 667px) {
+  .mobile-menu nav a {
+    padding: 0.375rem 0; /* Even smaller padding for small heights */
+  }
+  
+  .mobile-menu .w-16.h-px,
+  .mobile-menu .w-12.h-px {
+    margin: 0.25rem auto !important;
+  }
+  
+  .mobile-menu .flex.justify-center.gap-12,
+  .mobile-menu .flex.justify-center.gap-4 {
+    padding-bottom: 1rem;
+  }
+  
+  .mobile-menu .block.text-center.text-sm,
+  .mobile-menu .block.text-center.text-xs {
+    display: none; /* Hide language text on very small screens */
+  }
+}
+
+/* Close Button */
+.mobile-menu .close-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.2s ease-out;
+  border-radius: 9999px;
+}
+
+.mobile-menu .close-btn:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hide desktop navigation on mobile and tablet */
+@media (max-width: 1023px) {
+  .lg\:flex,
+  .lg\:block {
+    display: none !important;
+  }
+}
+
+/* Hide mobile menu on desktop */
+@media (min-width: 1024px) {
+  .mobile-menu,
+  .mobile-menu-btn {
+    display: none !important;
+  }
+} 

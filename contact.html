@@ -1,1 +1,501 @@
-<!-- Contact page content -->
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt | C10D s.r.o.</title>
+  <meta name="description" content="Kontaktní informace společnosti C10D s.r.o. - specialisté na laserové řezání a zpracování kovů.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1d4ed8',
+          },
+        },
+      },
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/light-theme.css">
+  <link rel="stylesheet" href="css/mobile-menu.css">
+  
+  <link rel="icon" href="images/favicon.ico">
+  
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="antialiased" x-data="{ isOpen: false }">
+  <header id="header" class="fixed w-full bg-slate-900 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between lg:justify-center relative">
+        <a href="index.html" class="logo transition-transform hover:scale-105 duration-300 lg:absolute lg:left-4">
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" id="header-logo" class="h-10 w-auto" loading="lazy">
+        </a>
+        
+        <button 
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-white hover:text-blue-400 transition-colors"
+          @click="isOpen = !isOpen"
+          :aria-expanded="isOpen"
+          aria-controls="mobile-menu"
+          aria-label="Menu">
+          <div class="flex flex-col justify-center w-6 h-5 space-y-1.5">
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'rotate-45 translate-y-2': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'opacity-0': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'-rotate-45 -translate-y-2': isOpen}"></span>
+          </div>
+        </button>
+        
+        <nav class="hidden lg:block" id="main-nav" aria-label="Hlavní navigace">
+          <ul class="flex space-x-8">
+            <li><a href="index.html#hero" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.home">Domů</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.about">O nás</a></li>
+            <li><a href="index.html#services" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.services">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.technologies">Technologie</a></li>
+            <li><a href="index.html#certifications" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.certifications">Certifikace</a></li>
+            <li><a href="index.html#projects" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.euProjects">Dotace EU</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.gallery">Galerie</a></li>
+            <li><a href="index.html#career" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400" data-key="nav.career">Kariéra</a></li>
+            <li><a href="contact.html" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-blue-400" data-key="nav.contact">Kontakt</a></li>
+          </ul>
+        </nav>
+        
+        <div class="hidden lg:block lg:absolute lg:right-4">
+          <div class="relative group">
+            <button class="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
+              <img class="w-5 h-5" src="images/flags/cs.svg" alt="Čeština">
+              <span>CZ</span>
+              <i class="fas fa-chevron-down text-xs ml-1"></i>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right">
+              <div class="py-1">
+                <a href="#" data-lang="cs" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/cs.svg" alt="Čeština">
+                  <span>Čeština</span>
+                </a>
+                <a href="#" data-lang="en" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/gb.svg" alt="English">
+                  <span>English</span>
+                </a>
+                <a href="#" data-lang="de" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/de.svg" alt="Deutsch">
+                  <span>Deutsch</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div 
+    id="mobile-menu" 
+    class="mobile-menu"
+    :class="{ 'show': isOpen }"
+    @click.away="isOpen = false"
+    x-show="isOpen"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-95"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95"
+    x-cloak>
+    <div class="container">
+      <div class="flex items-center justify-between mb-12">
+        <a href="#" class="flex items-center">
+          <img src="images/new-logo-white.svg" alt="C10D" class="h-8">
+        </a>
+        <button 
+          type="button"
+          class="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5"
+          @click="isOpen = false"
+          aria-label="Zavřít menu">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      <nav class="space-y-0.5">
+        <template x-for="(item, index) in [
+          { href: 'index.html', text: 'Domů', i18n: 'navigation.home' },
+          { href: 'index.html#about', text: 'O nás', i18n: 'navigation.about' },
+          { href: 'index.html#services', text: 'Služby', i18n: 'navigation.services' },
+          { href: 'index.html#technologies', text: 'Technologie', i18n: 'navigation.technologies' },
+          { href: 'index.html#certifications', text: 'Certifikace', i18n: 'navigation.certifications' },
+          { href: 'index.html#projects', text: 'Dotace EU', i18n: 'navigation.projects' },
+          { href: 'index.html#gallery', text: 'Galerie', i18n: 'navigation.gallery' },
+          { href: 'index.html#career', text: 'Kariéra', i18n: 'navigation.career' },
+          { href: 'contact.html', text: 'Kontakt', i18n: 'navigation.contact' }
+        ]">
+          <a :href="item.href" 
+             @click="isOpen = false" 
+             class="group block relative py-4 px-4 text-lg text-white/80 hover:text-white transition-all duration-200"
+             :class="{'opacity-100': window.location.pathname.includes(item.href)}"
+             :data-i18n="item.i18n">
+            <span x-text="item.text"></span>
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+          </a>
+        </template>
+      </nav>
+
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto my-8"></div>
+
+      <div class="flex justify-center gap-12">
+        <template x-for="lang in [
+          { code: 'cs', name: 'Čeština', flag: 'cs' },
+          { code: 'en', name: 'Angličtina', flag: 'gb' },
+          { code: 'de', name: 'Němčina', flag: 'de' }
+        ]">
+          <a :href="'#'" 
+             :data-lang="lang.code" 
+             class="group"
+             :class="{ 'opacity-100': localStorage.getItem('language') === lang.code }">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 group-hover:bg-white/10 transition-all duration-300 transform group-hover:scale-110">
+              <img :src="'images/flags/' + lang.flag + '.svg'" 
+                   :alt="lang.name" 
+                   class="w-6 h-6 transition-transform duration-300 group-hover:scale-110">
+            </div>
+            <span class="block text-center text-sm text-white/60 mt-3 group-hover:text-white transition-colors" x-text="lang.name"></span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  <section class="pt-32 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-white/[0.05] bg-[size:32px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+    <div class="container mx-auto px-4 relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400">
+          Kontaktní informace
+        </h1>
+        <p class="text-lg text-blue-100/80">Jsme tu pro vás. Neváhejte nás kontaktovat.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div>
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+              <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                <span class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-building text-blue-600"></i>
+                </span>
+                Kontaktní údaje
+              </h2>
+
+              <div class="space-y-8">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="group p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                    <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                      <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-building text-blue-600"></i>
+                      </span>
+                      Sídlo firmy
+                    </h3>
+                    <div class="space-y-2 text-slate-600">
+                      <p>C10D s.r.o.</p>
+                      <p>28.října 141</p>
+                      <p>Klimkovice 742 83</p>
+                    </div>
+                  </div>
+
+                  <div class="group p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                    <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                      <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-industry text-blue-600"></i>
+                      </span>
+                      Provozovna
+                    </h3>
+                    <div class="space-y-2 text-slate-600">
+                      <p>C10D s.r.o.</p>
+                      <p>Rybníčky 2285/31</p>
+                      <p>Nový Jičín 741 01</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                  <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                    <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                      <i class="fas fa-file-invoice text-blue-600"></i>
+                    </span>
+                    Fakturační údaje
+                  </h3>
+                  <div class="grid md:grid-cols-2 gap-4 text-slate-600">
+                    <div>
+                      <p>IČO: 29272807</p>
+                      <p>DIČ: CZ29272807</p>
+                    </div>
+                  
+                  </div>
+                </div>
+
+                <div class="border-t border-gray-100"></div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 text-lg mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                      <i class="fas fa-map-marker-alt text-blue-600"></i>
+                    </span>
+                    Kde nás najdete
+                  </h3>
+
+                  <div class="rounded-xl overflow-hidden mb-6 border border-gray-100">
+                    <iframe 
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2578.492275030138!2d18.00570621580581!3d49.73161937938136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713e5c54e0640b9%3A0x5abb32b2a2fdf0f3!2zUnlibsOtxI1reSAyMjg1LzMxLCA3NDEgMDEgTm92w70gSmnEjcOtbg!5e0!3m2!1scs!2scz!4v1711366171099!5m2!1scs!2scz"
+                      width="100%"
+                      height="300"
+                      style="border:0;"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <a href="https://maps.google.com/maps?q=C10D+s.r.o.,+Rybn%C3%AD%C4%8Dky+2285%2F31,+741+01+Nov%C3%BD+Ji%C4%8D%C3%ADn" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center justify-center px-4 py-3 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-all duration-300 flex-1 group">
+                      <i class="fab fa-google mr-2 group-hover:scale-110 transition-transform"></i>
+                      Otevřít v Google Maps
+                    </a>
+                    <a href="https://mapy.cz/s/helafatego" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="flex items-center justify-center px-4 py-3 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-all duration-300 flex-1 group">
+                      <i class="fas fa-map-marker-alt mr-2 group-hover:scale-110 transition-transform"></i>
+                      Otevřít v Mapy.cz
+                    </a>
+                  </div>
+
+                  <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg bg-gray-50">
+                      <h4 class="font-semibold text-slate-900 mb-2 flex items-center">
+                        <i class="fas fa-route mr-2 text-blue-600"></i>
+                        Doprava
+                      </h4>
+                      <p class="text-slate-600">Provozovna se nachází v průmyslové zóně Nového Jičína. Příjezd je možný po silnici I/57, odbočka na ulici Rybníčky.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-gray-50">
+                      <h4 class="font-semibold text-slate-900 mb-2 flex items-center">
+                        <i class="fas fa-parking mr-2 text-blue-600"></i>
+                        Parkování
+                      </h4>
+                      <p class="text-slate-600">Parkování je k dispozici přímo před budovou společnosti.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100">
+              <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center">
+                <span class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <i class="fas fa-users text-blue-600"></i>
+                </span>
+                Kontakty na oddělení
+              </h2>
+
+              <div class="space-y-6">
+                <div class="grid gap-6">
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-user-tie text-blue-600"></i>
+                        </span>
+                        Jednatel společnosti
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Václav Lichovník</p>
+                        <a href="mailto:vaclav.lichovnik@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          vaclav.lichovnik@c10d.cz
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-user-tie text-blue-600"></i>
+                        </span>
+                        Ředitel společnosti
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Lubomír Helísek</p>
+                        <a href="mailto:lubomir.helisek@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          lubomir.helisek@c10d.cz
+                        </a>
+                        <a href="tel:00420777916724" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
+                          +420 777 916 724
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-briefcase text-blue-600"></i>
+                        </span>
+                        Obchodní oddělení
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Ing. Daniel Tvarůžek</p>
+                        <a href="mailto:obchod@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          obchod@c10d.cz
+                        </a>
+                        <a href="tel:00420777916723" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
+                          +420 777 916 723
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-cogs text-blue-600"></i>
+                        </span>
+                        Technické oddělení
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Dominik Skalka</p>
+                        <a href="mailto:dominik.skalka@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          dominik.skalka@c10d.cz
+                        </a>
+                        <a href="tel:00420777916726" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
+                          +420 777 916 726
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-check-circle text-blue-600"></i>
+                        </span>
+                        Oddělení kvality
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Ivan Hranický</p>
+                        <a href="mailto:ivan.hranicky@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          ivan.hranicky@c10d.cz
+                        </a>
+                        <a href="tel:00420778045100" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
+                          +420 778 045 100
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl hover:bg-blue-50/50 transition-all duration-300 border border-gray-100">
+                      <h3 class="font-semibold text-slate-900 text-lg mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-100/50 rounded-lg flex items-center justify-center mr-3">
+                          <i class="fas fa-calculator text-blue-600"></i>
+                        </span>
+                        Ekonomické oddělení
+                      </h3>
+                      <div class="space-y-3">
+                        <p class="text-slate-800 font-semibold bg-blue-50 inline-block px-2 py-1 rounded-md">Veronika Friedlová</p>
+                        <a href="mailto:veronika.friedlova@c10d.cz" class="text-blue-600 hover:text-blue-700 flex items-center group">
+                          <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
+                          veronika.friedlova@c10d.cz
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" class="h-10 w-auto mb-4">
+          <p class="text-gray-400">Specialisté na laserové řezání a zpracování plechů</p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><i class="fas fa-map-marker-alt mr-2"></i>Klimkovice 742 83</li>
+            <li><i class="fas fa-phone mr-2"></i>+420 123 456 789</li>
+            <li><i class="fas fa-envelope mr-2"></i>info@c10d.cz</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Menu</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Domů</a></li>
+            <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">O nás</a></li>
+            <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-gray-400 hover:text-white transition-colors">Technologie</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 C10D s.r.o. Všechna práva vyhrazena.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/translations.js"></script>
+  <script>
+    // Header scroll behavior
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        header.classList.remove('shadow-lg');
+      } else {
+        header.classList.add('shadow-lg');
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+  <script src="js/main.js"></script>
+  <script src="js/modern.js"></script>
+  <script src="js/one-page-slide.js"></script>
+</body>
+</html> 

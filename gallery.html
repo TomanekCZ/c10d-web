@@ -1,1 +1,582 @@
-<!-- Gallery page content -->
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="gallery.page.title">Galerie | C10D s.r.o.</title>
+  <meta name="description" data-i18n="gallery.page.description" content="Prohlédněte si naše projekty a realizace v oblasti průmyslové kovovýroby a laserového řezání.">
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono&display=swap" rel="stylesheet">
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1d4ed8',
+          },
+        },
+      },
+    }
+  </script>
+  
+  
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/light-theme.css">
+  <link rel="stylesheet" href="css/mobile-menu.css">
+  
+  
+  <link rel="icon" href="images/favicon.ico">
+  
+  
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="antialiased bg-slate-50" x-data="{ isOpen: false }">
+  
+  <header id="header" class="fixed w-full bg-slate-900 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between lg:justify-center relative">
+        <a href="index.html" class="logo transition-transform hover:scale-105 duration-300 md:absolute md:left-4">
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" id="header-logo" class="h-10 w-auto">
+        </a>
+        
+        
+        <button 
+          type="button"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-white hover:text-blue-400 transition-colors"
+          @click="isOpen = !isOpen"
+          :aria-expanded="isOpen"
+          aria-controls="mobile-menu"
+          aria-label="Menu">
+          <div class="flex flex-col justify-center w-6 h-5 space-y-1.5">
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'rotate-45 translate-y-2': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'opacity-0': isOpen}"></span>
+            <span class="block w-full h-0.5 bg-current transition-all duration-300 ease-in-out" 
+                  :class="{'-rotate-45 -translate-y-2': isOpen}"></span>
+          </div>
+        </button>
+        
+        <nav class="hidden md:block" id="main-nav">
+          <ul class="flex flex-wrap justify-center space-x-4 md:space-x-6 lg:space-x-8">
+            <li><a href="index.html" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.home">Domů</a></li>
+            <li><a href="index.html#about" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.about">O nás</a></li>
+            <li><a href="index.html#services" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.services">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.technologies">Technologie</a></li>
+            <li><a href="index.html#certifications" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.certifications">Certifikace</a></li>
+            <li><a href="index.html#projects" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.projects">Dotace EU</a></li>
+            <li><a href="index.html#gallery" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.gallery">Galerie</a></li>
+            <li><a href="index.html#career" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.career">Kariéra</a></li>
+            <li><a href="index.html#contact" class="text-white hover:text-blue-400 transition-colors py-2 border-b-2 border-transparent hover:border-blue-400 text-sm md:text-base" data-key="nav.contact">Kontakt</a></li>
+          </ul>
+        </nav>
+        
+        <div class="hidden md:block md:absolute md:right-4">
+          <div class="relative group">
+            <button class="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
+              <img class="w-5 h-5" src="images/flags/cs.svg" alt="Čeština">
+              <span>CZ</span>
+              <i class="fas fa-chevron-down text-xs ml-1"></i>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right">
+              <div class="py-1">
+                <a href="#" data-lang="cs" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/cs.svg" alt="Čeština">
+                  <span>Čeština</span>
+                </a>
+                <a href="#" data-lang="en" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/gb.svg" alt="English">
+                  <span>English</span>
+                </a>
+                <a href="#" data-lang="de" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <img class="w-5 h-5 mr-2" src="images/flags/de.svg" alt="Deutsch">
+                  <span>Deutsch</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <div 
+    id="mobile-menu" 
+    class="mobile-menu"
+    :class="{ 'show': isOpen }"
+    @click.away="isOpen = false"
+    x-show="isOpen"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 scale-95"
+    x-transition:enter-end="opacity-100 scale-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-95"
+    x-cloak>
+    <div class="container">
+      
+      <div class="flex items-center justify-between mb-12">
+        <a href="#" class="flex items-center">
+          <img src="images/new-logo-white.svg" alt="C10D" class="h-8">
+        </a>
+        <button 
+          type="button"
+          class="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white transition-colors rounded-full hover:bg-white/5"
+          @click="isOpen = false"
+          aria-label="Zavřít menu">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+
+      
+      <nav class="space-y-0.5">
+        <template x-for="(item, index) in [
+          { href: 'index.html', text: 'Domů', i18n: 'navigation.home' },
+          { href: 'index.html#about', text: 'O nás', i18n: 'navigation.about' },
+          { href: 'index.html#services', text: 'Služby', i18n: 'navigation.services' },
+          { href: 'index.html#technologies', text: 'Technologie', i18n: 'navigation.technologies' },
+          { href: 'index.html#certifications', text: 'Certifikace', i18n: 'navigation.certifications' },
+          { href: 'index.html#projects', text: 'Dotace EU', i18n: 'navigation.projects' },
+          { href: 'index.html#gallery', text: 'Galerie', i18n: 'navigation.gallery' },
+          { href: 'index.html#career', text: 'Kariéra', i18n: 'navigation.career' },
+          { href: 'index.html#kontakt', text: 'Kontakt', i18n: 'navigation.contact' }
+        ]">
+          <a :href="item.href" 
+             @click="isOpen = false" 
+             class="group block relative py-4 px-4 text-lg text-white/80 hover:text-white transition-all duration-200"
+             :class="{'opacity-100': window.location.hash === item.href || (item.href === '#hero' && !window.location.hash)}"
+             :data-i18n="item.i18n">
+            <span x-text="item.text"></span>
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+          </a>
+        </template>
+      </nav>
+
+      
+      <div class="w-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto my-8"></div>
+
+      
+      <div class="flex justify-center gap-12">
+        <template x-for="lang in [
+          { code: 'cs', name: 'Čeština', flag: 'cs' },
+          { code: 'en', name: 'Angličtina', flag: 'gb' },
+          { code: 'de', name: 'Němčina', flag: 'de' }
+        ]">
+          <a :href="'#'" 
+             :data-lang="lang.code" 
+             class="group"
+             :class="{ 'opacity-100': localStorage.getItem('language') === lang.code }">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 group-hover:bg-white/10 transition-all duration-300 transform group-hover:scale-110">
+              <img :src="'images/flags/' + lang.flag + '.svg'" 
+                   :alt="lang.name" 
+                   class="w-6 h-6 transition-transform duration-300 group-hover:scale-110">
+            </div>
+            <span class="block text-center text-sm text-white/60 mt-3 group-hover:text-white transition-colors" x-text="lang.name"></span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  
+  <section class="pt-32 pb-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-blue-400 pb-1" data-i18n="gallery.page.heading">Galerie našich projektů</h1>
+        <p class="text-lg text-blue-100/80" data-i18n="gallery.page.subheading">Vyberte si kategorii, kterou chcete zobrazit</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="min-h-screen py-16 bg-slate-50">
+    <div class="container mx-auto px-4">
+      
+      <div class="mb-12">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button class="filter-btn active px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors" data-category="all" data-i18n="gallery.filters.all">
+            Všechny
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="laser" data-i18n="gallery.filters.laser_cutting">
+            Laserové řezání
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="ohranovaci-lisy" data-i18n="gallery.filters.bending">
+            Ohraňovací lisy
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="obrabeci-stroje" data-i18n="gallery.filters.machining">
+            Obráběcí stroje
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="svarovani" data-i18n="gallery.filters.welding">
+            Svařování
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="vrtani" data-i18n="gallery.filters.drilling">
+            Vrtání
+          </button>
+          <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors" data-category="areal" data-i18n="gallery.filters.premises">
+            Areál
+          </button>
+        </div>
+      </div>
+
+      
+      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      </div>
+
+      
+      <div id="loading-indicator" class="hidden">
+        <div class="flex justify-center items-center py-12">
+          <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-600 border-t-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <div id="gallery-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="relative z-10 container mx-auto px-4 h-full flex items-center justify-center">
+      
+      <button id="gallery-close" class="absolute top-4 right-4 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 bg-black/50 rounded-full z-20" aria-label="Close gallery" data-i18n="gallery.modal.close">
+        <i class="fas fa-times text-2xl"></i>
+      </button>
+      
+      
+      <button id="gallery-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 bg-black/50 rounded-full z-20 md:hidden" aria-label="Previous image" data-i18n="gallery.modal.previous">
+        <i class="fas fa-chevron-left text-xl"></i>
+      </button>
+      <button id="gallery-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 bg-black/50 rounded-full z-20 md:hidden" aria-label="Next image" data-i18n="gallery.modal.next">
+        <i class="fas fa-chevron-right text-xl"></i>
+      </button>
+      
+      
+      <div id="gallery-content" class="max-w-4xl w-full relative">
+        <div class="relative">
+          <img id="gallery-image" class="w-full h-auto" src="" alt="">
+          
+          <div class="absolute left-0 top-0 w-1/2 h-full cursor-pointer" id="touch-prev"></div>
+          <div class="absolute right-0 top-0 w-1/2 h-full cursor-pointer" id="touch-next"></div>
+        </div>
+        <div id="gallery-caption" class="text-white text-center mt-4 text-lg"></div>
+        
+        
+        <div id="gallery-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full text-sm">
+          <span id="current-image">1</span> / <span id="total-images">10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer class="bg-slate-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <img src="images/new-logo-white.svg" alt="C10D s.r.o. logo" class="h-10 w-auto mb-4">
+          <p class="text-gray-400" data-key="footer.description">Specialisté na laserové řezání a zpracování plechů</p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.contact">Kontakt</h3>
+          <ul class="space-y-2 text-gray-400">
+            <li><i class="fas fa-map-marker-alt mr-2"></i><span data-key="footer.address">Klimkovice 742 83</span></li>
+            <li><i class="fas fa-phone mr-2"></i><span data-key="footer.phone">+420 123 456 789</span></li>
+            <li><i class="fas fa-envelope mr-2"></i><span data-key="footer.email">info@c10d.cz</span></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.menu">Menu</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors" data-key="nav.home">Domů</a></li>
+            <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors" data-key="nav.about">O nás</a></li>
+            <li><a href="index.html#services" class="text-gray-400 hover:text-white transition-colors" data-key="nav.services">Služby</a></li>
+            <li><a href="index.html#technologies" class="text-gray-400 hover:text-white transition-colors" data-key="nav.technologies">Technologie</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold mb-4" data-key="footer.social">Sociální sítě</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p data-key="footer.copyright">&copy; 2024 C10D s.r.o. Všechna práva vyhrazena.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="js/translations.js"></script>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      const savedLanguage = localStorage.getItem('language') || 'cs';
+      
+      
+      function applyTranslations(language) {
+        
+        if (typeof translations === 'undefined') {
+          console.error('Translations object not available');
+          return;
+        }
+        
+        
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+        i18nElements.forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (translations[language] && translations[language][key]) {
+            const translation = translations[language][key];
+            
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+              element.placeholder = translation;
+            } else if (element.tagName === 'META') {
+              element.content = translation;
+            } else {
+              element.textContent = translation;
+            }
+          }
+        });
+        
+        
+        const keyElements = document.querySelectorAll('[data-key]');
+        keyElements.forEach(element => {
+          const key = element.getAttribute('data-key');
+          if (translations[language] && translations[language][key]) {
+            const translation = translations[language][key];
+            
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+              element.placeholder = translation;
+            } else if (element.tagName === 'META') {
+              element.content = translation;
+            } else {
+              element.textContent = translation;
+            }
+          }
+        });
+        
+        
+        const altElements = document.querySelectorAll('[data-i18n-alt]');
+        altElements.forEach(element => {
+          const key = element.getAttribute('data-i18n-alt');
+          if (translations[language] && translations[language][key]) {
+            element.alt = translations[language][key];
+          }
+        });
+        
+        console.log(`Translations applied for language: ${language}`);
+      }
+      
+      applyTranslations(savedLanguage);
+      
+      
+      const languageLinks = document.querySelectorAll('[data-lang]');
+      
+      languageLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const lang = link.getAttribute('data-lang');
+          
+          
+          localStorage.setItem('language', lang);
+          
+          
+          applyTranslations(lang);
+        });
+      });
+    });
+    
+    
+    const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const header = document.getElementById('header');
+    
+    let isMenuOpen = false;
+    
+    
+    const toggleMenu = (show) => {
+      isMenuOpen = show;
+      mobileMenuBtn.setAttribute('aria-expanded', show);
+      mobileMenu.classList.toggle('hidden', !show);
+      document.body.classList.toggle('overflow-hidden', show);
+    };
+    
+    
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu(!isMenuOpen);
+    });
+
+    
+    document.addEventListener('click', (e) => {
+      if (isMenuOpen && 
+          !mobileMenu.contains(e.target) && 
+          !mobileMenuBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    
+    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        toggleMenu(false);
+      });
+    });
+
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        toggleMenu(false);
+      }
+    });
+
+    
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll <= 0) {
+        header.classList.remove('shadow-lg');
+      } else {
+        header.classList.add('shadow-lg');
+      }
+    });
+  </script>
+  <script src="gallery.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleryGrid = document.getElementById('gallery-grid');
+      const modal = document.getElementById('gallery-modal');
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      const modalImage = document.getElementById('gallery-image');
+      const modalCaption = document.getElementById('gallery-caption');
+      const closeBtn = document.getElementById('gallery-close');
+      const prevBtn = document.getElementById('gallery-prev');
+      const nextBtn = document.getElementById('gallery-next');
+      const touchPrev = document.getElementById('touch-prev');
+      const touchNext = document.getElementById('touch-next');
+      const currentImageSpan = document.getElementById('current-image');
+      const totalImagesSpan = document.getElementById('total-images');
+      const galleryContent = document.getElementById('gallery-content');
+      
+      let currentIndex = 0;
+      let images = [];
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+      
+      
+      function loadImage(index) {
+        currentIndex = index;
+        modalImage.src = images[index].src;
+        modalCaption.textContent = images[index].alt;
+        currentImageSpan.textContent = index + 1;
+        totalImagesSpan.textContent = images.length;
+      }
+      
+      
+      function showNext(e) {
+        e?.stopPropagation();
+        currentIndex = (currentIndex + 1) % images.length;
+        loadImage(currentIndex);
+      }
+      
+      function showPrev(e) {
+        e?.stopPropagation();
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        loadImage(currentIndex);
+      }
+      
+      
+      nextBtn.addEventListener('click', showNext);
+      prevBtn.addEventListener('click', showPrev);
+      touchNext.addEventListener('click', showNext);
+      touchPrev.addEventListener('click', showPrev);
+      
+      
+      closeBtn.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      
+      
+      galleryContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+      });
+      
+      
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('hidden')) {
+          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === 'Escape') closeModal();
+        }
+      });
+      
+      
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      modalImage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      modalImage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeLength = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeLength) > swipeThreshold) {
+          if (swipeLength > 0) {
+            showPrev();
+          } else {
+            showNext();
+          }
+        }
+      }
+      
+      
+      function initGallery() {
+        const imageElements = document.querySelectorAll('#gallery-grid img');
+        images = Array.from(imageElements);
+        
+        images.forEach((img, index) => {
+          img.addEventListener('click', () => {
+            currentIndex = index;
+            loadImage(currentIndex);
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+          });
+        });
+      }
+      
+      
+      window.addEventListener('load', initGallery);
+    });
+  </script>
+</body>
+</html> 
