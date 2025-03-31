@@ -1,0 +1,16 @@
+{
+  "name": "c10d-web",
+  "version": "1.0.0",
+  "description": "C10D company website",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0"
+  }
+}
